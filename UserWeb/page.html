@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert handwriting to text</title>
+    <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head> 
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Convert handwriting to text</h1>
+        </div>
+    </header>
+    <div id="page1" style="display: flex;">
+        <div class="toolbar">
+            <button id="convert-button" style="display: none;">Convert</button>
+        </div>
+        <div class="image-manager">
+            <div class="image-grid" id="image-grid">
+                <!-- Các ảnh sẽ được hiển thị ở đây -->
+            </div>
+            <div class="add-files">
+                <label for="file-input" class="upload-button">
+                    <div class="upload-icon">+</div>
+                    <span>Add files</span>
+                </label>
+                <input type="file" id="file-input" accept="image/*" multiple hidden>
+            </div>
+        </div>
+    </div>
+    <div id="page2" style="display: none;">
+        <div class="display">
+            <div id="display-image"></div>
+        
+            <div class="text-container">
+                <!-- Upper part to show highlighted results -->
+                <div id="highlighted-text" class="highlighted-text"></div>
+                <!-- Lower part with editable text -->
+                <div class="editable-text">
+                  <textarea id="editable-textarea" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+          <button id="prevPage">Previous</button>
+          <span id="pageNumber"></span>
+          <button id="nextPage">Next</button>
+        </div>
+        <div class="toolbar">
+          <button id="download-button">Download</button>
+      </div>
+    </div>
+    <div class="modal" id="image-modal">
+        <span class="close-modal" id="close-modal">&times;</span>
+        <img id="modal-image" alt="Full Image">
+        <p id="image-name" class="image-name"></p>
+    </div>
+    <div id="loadingPopup" class="popup" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

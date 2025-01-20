@@ -1,0 +1,322 @@
+.site-header {
+    background-color: #007BFF; /* Màu xanh dương */
+    color: #FFFFFF; /* Chữ trắng */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng */
+}
+
+.site-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.add-files {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.upload-button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #bbb;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #aaa6a6;
+}
+
+.upload-button:hover {
+    background-color: #eaeaea;
+}
+
+.upload-icon {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.image-manager {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    justify-items: center; /* Căn giữa các item trong grid */
+}
+
+.image-item {
+    position: relative;
+    text-align: center;
+    width: 100%;  /* Đảm bảo ảnh chiếm hết chiều rộng của phần tử */
+    height: 250px; /* Điều chỉnh kích thước theo ý muốn */
+    margin: 0;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    background-color: #f8f8f8; /* Màu nền cho các ảnh */
+    display: flex;
+    flex-direction: column; /* Xếp theo chiều dọc */
+    justify-content: space-between; /* Khoảng cách giữa ảnh và chữ */
+    align-items: center; /* Căn giữa nội dung */
+    cursor: move;
+}
+
+.image-item.drag-over {
+    border: 2px dashed #007bff; /* Thêm đường viền dạng đứt cho vùng có thể thả */
+    background-color: rgba(0, 123, 255, 0.1); /* Màu nền nhạt khi thả vào */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Thêm hiệu ứng bóng đổ cho phần tử có thể thả vào */
+}
+
+.image-item img {
+    width: 90%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.actions {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.image-item:hover .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.actions button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.image-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-align: center;
+    flex-direction: column;
+}
+
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.image-name {
+    color: #fff; /* Màu chữ trắng */
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.toolbar {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+#convert-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#convert-button:hover {
+    background-color: #45a049;
+}
+
+#download-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#download-button:hover {
+    background-color: #45a049;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.spinner {
+    border: 10px solid transparent;
+    border-top: 10px solid #ff8c42; /* Màu cam nhạt */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 0.8s linear infinite;
+}
+
+
+/* Spin animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#page2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.display {
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#display-image {
+    width: 50%;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: center;
+}
+
+#display-image img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+.text-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.highlighted-text {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+#highlighted-text p {
+    margin: 0; /* Xóa margin mặc định */
+    padding: 0; /* Xóa padding mặc định */
+}
+
+.editable-text {
+    flex-grow: 1;
+}
+
+textarea#editable-textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.pagination span {
+    font-size: 16px;
+}
+
+.low-confidence {
+    color: red;
+}
