@@ -1,1 +1,1 @@
-# Convert_handwriting_to_text
+# Hệ thống chuyển chữ viết tay thành văn bản điện tử
